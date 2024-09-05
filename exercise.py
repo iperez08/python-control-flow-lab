@@ -239,22 +239,26 @@ print_greeting()
 def guess_number():
     # Your control flow logic goes here
     target = 53
-    guess_remaining = 5
     print('My secret number is between 1 and 100 inclusive. You have 5 attemps.')
-    while guess_remaining > 0:
+    for num in range(5):
         guess = int(input('Guess my number: '))
         if guess == target:
-            print('You got it!')
-        elif abs(guess - target) <= 5:
-            print('Wow, super close.')
-        elif guess < target:
-            print('Hmm, too low.')
-        elif guess > target:
-            print('Hmm, too high.')
-        elif guess_remaining == 1:
+                print('You got it!')
+                break
+        if num == 4:
+            print('Sorry, you didnt get it this time! :(')
+            break
+        if num == 3:
+            if guess < target:
+                print('Hmm, too low.')
+            elif guess > target:
+                print('Hmm, too high.')
             print('Last chance!')
-        guess = int(input('Guess my number: '))
-
+        else:
+            if guess < target:
+                print('Hmm, too low.')
+            elif guess > target:
+                print('Hmm, too high.')
 
 # Call the function
 guess_number()
